@@ -1,7 +1,7 @@
 const { db } = require('../database')
 const path = require('path')
 const I18n = require('../database')
-const updateMiddleware = require('./middlewares/updateMiddleware')
+const newUserMiddleware = require('./middlewares/newUserMiddleware')
 const sceneInitialisation = require('./stage')
 const botError = require('./exceptions')
 
@@ -40,7 +40,7 @@ module.exports = (bot) => {
 
   bot.context.i18n = i18n
 
-  bot.start((ctx) => console.log(ctx.from.first_name))
+  bot.start((ctx) => newUserMiddleware(ctx))
 
   sceneInitialisation(bot)
 }

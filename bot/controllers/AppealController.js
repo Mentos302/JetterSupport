@@ -9,14 +9,14 @@ class AppealController {
   orderNumberValidation(ctx) {
     parseInt(ctx.message.text)
       ? ctx.scene.enter('getappeal', { orderId: ctx.message.text })
-      : ctx.reply(ctx.i18n.t('appeeal.validationfailed'))
+      : ctx.reply(ctx.i18n.t('appeal.validationfailed'))
   }
 
   appealRequest(ctx) {
     if (ctx.scene.state.orderId)
       ctx.session.appeal.orderId = ctx.scene.state.orderId
     let msg
-    ctx.session.appeal.category = 'reclamation'
+    ctx.session.appeal.category === 'reclamation'
       ? (msg = 'appeal.requestReclamation')
       : (msg = 'appeal.requestMessage')
 
@@ -30,22 +30,22 @@ class AppealController {
   }
 
   apperalPutting(ctx) {
-    const { text, photos, videos, documents } = ctx.session.appeal
+    const { msg, photos, videos, documents } = ctx.session.appeal
 
-    let msg = ctx.i18n.t('appeal.putting', { text })
+    let text = ctx.i18n.t('appeal.putting', { msg })
 
     if (videos || photos || documents) {
-      msg += `<i>${ctx.i18n.t('appeal.addfiles')}<b>${
+      text += `<i>${ctx.i18n.t('appeal.addfiles')}<b>${
         photos ? photos.length : 0
       }</b> 📷  <b>${videos ? videos.length : 0}</b> 📹 <b>${
         documents ? documents.length : 0
       }</b> 📄</i>`
     } else {
-      msg += ctx.i18n.t('appeal.nofiles')
+      text += ctx.i18n.t('appeal.nofiles')
     }
 
     ctx.reply(
-      msg,
+      text,
       Extra.HTML().markup((m) =>
         m.inlineKeyboard([
           [m.callbackButton(`📸 Прикрепить доп.материалы`, 'addmedia')],
@@ -63,7 +63,7 @@ class AppealController {
   }
 
   async puttingPhotoHandler(ctx) {
-    ctx.session.appeal.photos = ctx.session.reqbody.photos || []
+    ctx.session.appeal.photos = ctx.session.appeal.photos || []
 
     const photos = ctx.message.photo
 
@@ -75,7 +75,7 @@ class AppealController {
   }
 
   async puttingVideoHandler(ctx) {
-    ctx.session.appeal.videos = ctx.session.reqbody.videos || []
+    ctx.session.appeal.videos = ctx.session.appeal.videos || []
 
     ctx.session.appeal.videos.push(
       await ctx.telegram.getFileLink(ctx.message.video.file_id)
@@ -85,7 +85,7 @@ class AppealController {
   }
 
   async puttingDocumentHandler(ctx) {
-    ctx.session.appeal.documents = ctx.session.reqbody.documents || []
+    ctx.session.appeal.documents = ctx.session.appeal.documents || []
 
     ctx.session.appeal.documents.push(
       await ctx.telegram.getFileLink(ctx.message.document.file_id)
@@ -95,7 +95,7 @@ class AppealController {
   }
 
   async puttingMediaGroupHandler(ctx) {
-    ctx.session.appeal.photos = ctx.session.reqbody.photos || []
+    ctx.session.appeal.photos = ctx.session.appeal.photos || []
 
     for (const message of ctx.mediaGroup) {
       ctx.session.appeal.photos.push(
@@ -125,7 +125,19 @@ class AppealController {
       orderId: ctx.session.appeal.orderNumber,
     }
 
-    service.newAppeal(appeal)
+    // await service.newAppeal(appeal)
+
+    ctx.reply(
+      ctx.i18n.t('appeal.submitconfirm'),
+      Extra.HTML().markup((m) =>
+        m.inlineKeyboard([
+          [m.callbackButton(`📝 Написать новое сообщение`, 'anotherone')],
+        ])
+      )
+    )
+
+    ctx.session = {}
+    ctx.scene.leave()
   }
 }
 

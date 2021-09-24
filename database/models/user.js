@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const userScheme = new mongoose.Schema(
   {
-    chat_ids: {
+    chat_id: {
       type: String,
       required: true,
     },

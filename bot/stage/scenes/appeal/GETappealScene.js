@@ -4,7 +4,11 @@ module.exports = () => {
   const scene = new Scene('getappeal')
   const controller = require('../../../controllers/AppealController')
 
-  scene.enter((ctx) => ctx)
+  scene.enter(controller.appealRequest)
+
+  scene.on('text', controller.appealResponse)
+
+  scene.on('message', (ctx) => ctx.reenter())
 
   return scene
 }

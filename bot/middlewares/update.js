@@ -1,8 +1,8 @@
 const { User } = require('../../database')
 
-module.exports = (ctx) => {
+module.exports = async (ctx) => {
   const chat_id = ctx.from.id
-  const user = User.findOne({ chat_id })
+  const user = await User.findOne({ chat_id })
 
   if (!user) {
     try {

@@ -1,10 +1,9 @@
 const { db } = require('../database')
 const path = require('path')
-const I18n = require('../database')
-const newUserMiddleware = require('./middlewares/newUserMiddleware')
+const I18n = require('telegraf-i18n')
+const updateMiddleware = require('./middlewares/update')
 const sceneInitialisation = require('./stage')
 const botError = require('./exceptions')
-
 const rateLimit = require('telegraf-ratelimit')
 const session = require('telegraf/session')
 
@@ -40,7 +39,7 @@ module.exports = (bot) => {
 
   bot.context.i18n = i18n
 
-  bot.start((ctx) => newUserMiddleware(ctx))
-
   sceneInitialisation(bot)
+
+  bot.use((ctx) => updateMiddleware(ctx))
 }

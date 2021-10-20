@@ -22,10 +22,8 @@ class AppealService {
         date: moment().format('DD.MM.YYYY'),
         status: 'open',
       })
-
-      // await nodeMailer(appeal)
     } catch (e) {
-      console.error(e)
+      console.log(e)
     }
   }
 }

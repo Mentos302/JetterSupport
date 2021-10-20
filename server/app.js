@@ -1,9 +1,19 @@
 const ngrok = require('ngrok')
 const express = require('express')
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const db = require('../database')
 const botInitializtion = require('../bot')
 const Telegraf = require('telegraf')
+const errorMiddleware = require('./middleware/error-middleware')
 const app = express()
+
+app.use(bodyParser.json())
+app.use(cookieParser())
+app.use(cors())
+require('./routes')(app)
+app.use(errorMiddleware)
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -15,6 +25,6 @@ db.connection.once('open', async () => {
   bot.telegram.setWebhook(`${await ngrok.connect(8443)}/secreting`)
 
   app.listen(8443, () => {
-    console.log('Bot has been started ...')
+    console.log('Server has been started ...')
   })
 })

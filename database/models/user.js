@@ -4,7 +4,16 @@ const userScheme = new mongoose.Schema(
   {
     chat_id: {
       type: String,
-      required: true,
+    },
+    login: {
+      type: String,
+      unique: true,
+    },
+    password: {
+      type: String,
+    },
+    date: {
+      type: String,
     },
   },
   { versionKey: false }

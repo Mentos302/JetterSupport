@@ -22,7 +22,7 @@ class CounterServices {
 
   async getStatUsers() {
     try {
-      const users = await db.User.find()
+      const users = await User.find()
       const history = await this.getMetricHistory(users)
 
       return {
@@ -39,6 +39,8 @@ class CounterServices {
     for (let i = 1; i < 8; i++) {
       history.push(0)
       data.forEach((e) => {
+        console.log(e.date)
+        console.log(moment().subtract(i, 'days').format('DD.MM.YYYY'))
         if (e.date == moment().subtract(i, 'days').format('DD.MM.YYYY')) {
           history[i - 1]++
         }

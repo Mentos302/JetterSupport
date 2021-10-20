@@ -21,10 +21,9 @@ botInitializtion(bot)
 
 db.connection.once('open', async () => {
   console.log('Connected to MongoDB')
-  app.use(bot.webhookCallback('/secreting'))
-  bot.telegram.setWebhook(`${await ngrok.connect(8443)}/secreting`)
+  bot.launch()
 
-  app.listen(8443, () => {
+  app.listen(3001, () => {
     console.log('Server has been started ...')
   })
 })

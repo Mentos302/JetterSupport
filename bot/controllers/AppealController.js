@@ -125,7 +125,7 @@ class AppealController {
       orderId: ctx.session.appeal.orderNumber,
     }
 
-    // await service.newAppeal(appeal)
+    await service.newAppeal(appeal)
 
     ctx.reply(
       ctx.i18n.t('appeal.submitconfirm'),

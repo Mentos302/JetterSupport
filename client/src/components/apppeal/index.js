@@ -14,7 +14,6 @@ const Appeal = () => {
     const fetchData = async () => {
       try {
         const res = await API.get(`appeal/single/${appealID}`);
-        console.log(res.data);
         setAppeal(res.data);
       } catch (e) {
         console.log(e);

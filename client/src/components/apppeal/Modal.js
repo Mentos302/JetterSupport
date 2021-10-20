@@ -30,7 +30,7 @@ const Modal = (props) => {
 
   const msgSubmitHandler = async () => {
     try {
-      await API.post(`/appealation/sendMessage`, {
+      await API.post(`/appeal/sendMessage`, {
         id,
         msg: tgMessage,
       });

@@ -17,7 +17,7 @@ const Tables = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await API.get(`reclamation`);
+        const res = await API.get(`appeal`);
         setReclamations(res.data.reverse().slice(0, 4));
       } catch (e) {
         console.log(e);
@@ -32,7 +32,7 @@ const Tables = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>Последние рекламации</CCardHeader>
+            <CCardHeader>Последние обращения</CCardHeader>
             <CCardBody className="cardsList">
               {reclamations.map((e) => (
                 <div className="card">
@@ -55,7 +55,7 @@ const Tables = () => {
                     {e.status === "closed" ? (
                       <span className="badge mb-2 badge-success">Закрыто</span>
                     ) : null}
-                    <h5 className="card-title">Заказ №{e.orderId}</h5>
+                    <h5 className="card-title">Обращение №{e.reqidenty}</h5>
                     <p className="card-text">
                       {e.text.length < 100
                         ? e.text

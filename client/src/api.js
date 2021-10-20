@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://service.tabulasense.ru/api",
+  baseURL: "http://localhost:3001/api",
   responseType: "json",
-  withCredentials: true,
 });
 
 // api.interceptors.request.use((config) => {

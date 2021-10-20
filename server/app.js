@@ -7,11 +7,12 @@ const db = require('../database')
 const botInitializtion = require('../bot')
 const Telegraf = require('telegraf')
 const errorMiddleware = require('./middleware/error-middleware')
+
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(cors())
 require('./routes')(app)
 app.use(errorMiddleware)
 

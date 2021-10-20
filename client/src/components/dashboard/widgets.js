@@ -19,19 +19,19 @@ export default () => {
     fetchData();
   }, []);
 
-  return counter.usersQuantity ? (
+  return counter.usersData ? (
     <CRow>
       <CCol sm="12" lg="6">
         <CWidgetDropdown
           color="gradient-primary"
-          header={counter.usersQuantity}
+          header={counter.usersData.quantity}
           text="Пользователя(ей)"
           footerSlot={
             <ChartLineSimple
               pointed
               className="c-chart-wrapper mt-3 mx-3"
               style={{ height: "70px" }}
-              dataPoints={counter.usersHistory.reverse()}
+              dataPoints={counter.usersData.history.reverse()}
               pointHoverBackgroundColor="primary"
               label="новые пользователи"
               labels="day"
@@ -43,14 +43,14 @@ export default () => {
       <CCol sm="12" lg="6">
         <CWidgetDropdown
           color="gradient-warning"
-          header={JSON.stringify(counter.reclamOpens)}
-          text="Открытых рекламаций"
+          header={counter.appealsData.quantity}
+          text="Открытых обращений"
           footerSlot={
             <ChartLineSimple
               pointed
               className="mt-3 mx-3"
               style={{ height: "70px" }}
-              dataPoints={counter.reclamHistory.reverse()}
+              dataPoints={counter.appealsData.history.reverse()}
               pointHoverBackgroundColor="warning"
               options={{ elements: { line: { tension: 0.00001 } } }}
               label="новых запросов"

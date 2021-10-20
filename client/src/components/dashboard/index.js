@@ -1,5 +1,5 @@
-import Widgets from "./widgets";
-import Tables from "./tables";
+import Widgets from "./Widgets";
+import Tables from "./Tables";
 
 const Dashboard = () => (
   <>

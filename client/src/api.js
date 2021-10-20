@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://5.63.159.40:3001/api",
+  baseURL: "http://support.jetterhover.com/api",
   responseType: "json",
 });
 

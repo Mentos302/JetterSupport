@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const appealScheme = new mongoose.Schema(
   {
     from: {
-      type: Number,
+      type: Object,
       required: true,
     },
     category: { type: String },

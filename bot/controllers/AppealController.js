@@ -29,7 +29,7 @@ class AppealController {
     ctx.scene.enter('putappeal')
   }
 
-  apperalPutting(ctx) {
+  appealPutting(ctx) {
     const { msg, photos, videos, documents } = ctx.session.appeal
 
     let text = ctx.i18n.t('appeal.putting', { msg })
@@ -115,14 +115,19 @@ class AppealController {
   }
 
   async puttingSubmit(ctx) {
+    const { category, msg, photos, videos, documents, orderId } =
+      ctx.session.appeal
     const appeal = {
-      from: ctx.from.id,
-      category: ctx.session.appeal.category,
-      text: ctx.session.appeal.msg,
-      photos: ctx.session.appeal.photos,
-      videos: ctx.session.appeal.videos,
-      documents: ctx.session.appeal.documents,
-      orderId: ctx.session.appeal.orderNumber,
+      from: {
+        name: ctx.from.first_name,
+        id: ctx.from.id,
+      },
+      category,
+      text: msg,
+      photos: photos,
+      videos: videos,
+      documents: documents,
+      orderId: orderId,
     }
 
     await service.newAppeal(appeal)

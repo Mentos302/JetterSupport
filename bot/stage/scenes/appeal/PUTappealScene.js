@@ -4,7 +4,7 @@ module.exports = () => {
   const scene = new Scene('putappeal')
   const controller = require('../../../controllers/AppealController')
 
-  scene.enter(controller.apperalPutting)
+  scene.enter(controller.appealPutting)
 
   scene.action('addmedia', controller.puttingAddMediaRequest)
   scene.action('clearing', controller.puttingPreventDefault)

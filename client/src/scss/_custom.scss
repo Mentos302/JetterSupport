@@ -4,3 +4,41 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 25px;
 }
+
+.requestContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.reqBtns {
+  display: flex;
+}
+
+.reqBtns button,
+.reqBtns div {
+  margin-left: 0 !important;
+  width: 49.5%;
+}
+.tgResponseBtn {
+  margin: 3.5px;
+  font-weight: 400;
+  font-size: 1.09375rem;
+  line-height: 1.5;
+}
+.cardFooter {
+  text-align: right;
+  color: grey;
+}
+.pdfButton {
+  list-style: none;
+  button {
+    float: right;
+  }
+}
+.reqCardHeader {
+  display: flex;
+  justify-content: space-between;
+  .subtitle {
+    font-size: 0.9em;
+    color: #a3a3a3;
+  }
+}

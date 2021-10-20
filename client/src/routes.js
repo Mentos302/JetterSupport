@@ -61,13 +61,19 @@ const Users = React.lazy(() => import("./views/users/Users"));
 const User = React.lazy(() => import("./views/users/User"));
 
 const Dashboard = React.lazy(() => import("./components/dashboard"));
+const AppealsList = React.lazy(() => import("./components/appeals-list"));
+const Appeal = React.lazy(() => import("./components/apppeal"));
 
 const routes = [
   { path: "/", exact: true, name: "Главная" },
   { path: "/dashboard", name: "Статистика", component: Dashboard },
-  { path: "/theme", name: "Theme", component: Colors, exact: true },
-  { path: "/theme/colors", name: "Colors", component: Colors },
-  { path: "/theme/typography", name: "Typography", component: Typography },
+  { path: "/appeals", name: "Обращения", component: AppealsList, exact: true },
+  { path: "/appeals/idea", name: "Идеи", component: AppealsList },
+  { path: "/appeals/tobuy", name: "Закупить", component: AppealsList },
+  { path: "/appeals/problems", name: "Проблемы", component: AppealsList },
+  { path: "/appeals/reclamation", name: "Рекламации", component: AppealsList },
+  { path: "/appeal", component: Appeal },
+
   { path: "/base", name: "Base", component: Cards, exact: true },
   { path: "/base/breadcrumbs", name: "Breadcrumbs", component: Breadcrumbs },
   { path: "/base/cards", name: "Cards", component: Cards },

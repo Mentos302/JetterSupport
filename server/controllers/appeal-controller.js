@@ -23,7 +23,7 @@ class AppealController {
     }
   }
 
-  getSingleById(req, res) {
+  async getSingleById(req, res) {
     try {
       const { id } = req.params
 

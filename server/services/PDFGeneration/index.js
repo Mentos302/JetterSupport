@@ -24,7 +24,7 @@ module.exports = async (appeal, resolve) => {
 
   pdf
     .create(html, options)
-    .toFile(`client/public/uploads/${orderId}.pdf`, function (err, res) {
+    .toFile(`client/build/uploads/${orderId}.pdf`, function (err, res) {
       if (err) return console.log(err)
       resolve(`${process.env.SITE_URL}/uploads/${orderId}.pdf`)
     })

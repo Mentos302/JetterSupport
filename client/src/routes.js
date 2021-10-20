@@ -70,7 +70,7 @@ const routes = [
   { path: "/appeals", name: "Обращения", component: AppealsList, exact: true },
   { path: "/appeals/idea", name: "Идеи", component: AppealsList },
   { path: "/appeals/tobuy", name: "Закупить", component: AppealsList },
-  { path: "/appeals/problems", name: "Проблемы", component: AppealsList },
+  { path: "/appeals/problem", name: "Проблемы", component: AppealsList },
   { path: "/appeals/reclamation", name: "Рекламации", component: AppealsList },
   { path: "/appeal", component: Appeal },
 

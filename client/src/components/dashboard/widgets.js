@@ -24,7 +24,7 @@ export default () => {
       <CCol sm="12" lg="6">
         <CWidgetDropdown
           color="gradient-primary"
-          header={counter.usersData.quantity}
+          header={counter.usersData.quantity || "0"}
           text="Пользователя(ей)"
           footerSlot={
             <ChartLineSimple
@@ -43,7 +43,7 @@ export default () => {
       <CCol sm="12" lg="6">
         <CWidgetDropdown
           color="gradient-warning"
-          header={counter.appealsData.quantity}
+          header={counter.appealsData.quantity || "0"}
           text="Открытых обращений"
           footerSlot={
             <ChartLineSimple
@@ -53,7 +53,7 @@ export default () => {
               dataPoints={counter.appealsData.history.reverse()}
               pointHoverBackgroundColor="warning"
               options={{ elements: { line: { tension: 0.00001 } } }}
-              label="новых запросов"
+              label="новых обращений"
               labels="day"
             />
           }

@@ -22,7 +22,7 @@ const Modal = (props) => {
   const [tgMessage, setTgMessage] = useState("");
 
   const { info, setInfo, appeal } = props;
-  const { id, name } = appeal;
+  const { id, name } = appeal.from;
 
   const msgChangeHandler = (e) => {
     setTgMessage(e.target.value);

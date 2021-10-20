@@ -26,7 +26,7 @@ const Appeal = () => {
   return appeal._id ? (
     <div className="requestContainer">
       <Cards appeal={appeal} />
-      <AppealBody appeal={appeal} />
+      <AppealBody appeal={appeal} setAppeal={setAppeal} />
     </div>
   ) : null;
 };

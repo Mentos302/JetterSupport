@@ -55,6 +55,8 @@ class AppealController {
 
       res.status(200).json({ message: `Сообщение успешно отправлено` })
     } catch (e) {
+      console.log(e)
+
       res.status(500).json({ message: `Ошибка при отправке сообщения` })
     }
   }

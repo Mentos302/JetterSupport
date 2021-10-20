@@ -132,6 +132,26 @@ class AppealController {
 
     await service.newAppeal(appeal)
 
+    const categorySlug = () => {
+      switch (category) {
+        case 'idea':
+          return 'Идея'
+        case 'tobuy':
+          return 'Закупить'
+        case 'problem':
+          return 'Проблема'
+        case 'reclamation':
+          return 'Рекламация'
+      }
+    }
+
+    ctx.telegram.sendMessage(
+      process.env.ADMIN_CHATID,
+      `📮 Новое сообщение в @JetterSupportBot\n\nТип: <b>${categorySlug()}</b>, от пользователя <b>${
+        ctx.from.first_name
+      }</b>\n\n<i>Подробнее:</i> support.jetterhover.com`,
+      Extra.HTML()
+    )
     ctx.reply(
       ctx.i18n.t('appeal.submitconfirm'),
       Extra.HTML().markup((m) =>

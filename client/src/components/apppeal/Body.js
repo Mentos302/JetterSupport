@@ -24,6 +24,7 @@ const AppealBody = (props) => {
         id: _id,
         status,
       });
+
       props.setAppeal({ ...props.appeal, status });
     } catch (e) {
       console.log(e);
@@ -63,7 +64,7 @@ const AppealBody = (props) => {
                   return "danger";
                 case "process":
                   return "warning";
-                case "success":
+                case "closed":
                   return "success";
               }
             })()}
@@ -75,7 +76,7 @@ const AppealBody = (props) => {
                   return "Открыто";
                 case "process":
                   return "В работе";
-                case "success":
+                case "closed":
                   return "Закрыто";
               }
             })()}
